@@ -44,6 +44,24 @@ export default function HomePage() {
           </ul>
         </div>
       </section>
+
+      <section className="mt-8 grid gap-4 md:grid-cols-3">
+        <article className="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-200 transition hover:ring-[#001954]">
+          <h3 className="text-lg font-semibold text-slate-900">
+            Server Components
+          </h3>
+          <p className="mt-2 text-sm text-slate-600">
+            This project uses Next.js 13's new app directory and server
+            components to fetch data on the server and render pages efficiently.
+          </p>
+        </article>
+        <article className="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
+          <h3 className="text-lg font-semibold">Client Components</h3>
+          <p className="mt-2 text-slate-600">
+            Search page uses useState for interactive filtering.
+          </p>
+        </article>
+      </section>
     </main>
   );
 }
