@@ -1,3 +1,6 @@
+import Link from "next/link";
+import { notFound } from "next/navigation";
+
 function formatLanguage(languages) {
   if (!languages) return "Not available";
   return Object.values(languages).join(", ");
