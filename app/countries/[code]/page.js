@@ -19,7 +19,7 @@ function formatCurrencies(currencies) {
 export async function generateMetadata({ params }) {
   try {
     const res = await fetch(
-      `https://restcountries.com/v3.1/alpha/${params.code}`,
+      `https://restcountries.com/v3.1/alpha/${params.code}?fields=name,flags,capital,region,subregion,population,languages,currencies,timezones,maps`,
       { cache: "no-store" },
     );
 
