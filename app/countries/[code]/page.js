@@ -11,41 +11,53 @@ function formatCurrencies(currencies) {
 
   return Object.values(currencies)
     .map((currency) =>
-      currency.symbol ? `${currency.name} (${currency.symbol})` : currency.name,
+      currency.symbol
+        ? `${currency.name} (${currency.symbol})`
+        : currency.name
     )
     .join(", ");
 }
 
 export async function generateMetadata({ params }) {
+  const { code } = await params;
+
   try {
     const res = await fetch(
-      `https://restcountries.com/v3.1/alpha/${params.code}?fields=name,flags,capital,region,subregion,population,languages,currencies,timezones,maps`,
-      { cache: "no-store" },
+      `https://restcountries.com/v3.1/alpha/${code}?fields=name`,
+      {
+        cache: "no-store",
+      }
     );
 
     if (!res.ok) {
-      return { title: "Country Details | World Explorer" };
+      return {
+        title: "Country Details | World Explorer",
+      };
     }
 
     const data = await res.json();
-    const country = data[0];
+    const country = Array.isArray(data) ? data[0] : data;
 
     return {
-      title: `${country.name.common} | World Explorer`,
-      description: `Details about ${country.name.common}`,
+      title: `${country?.name?.common || "Country"} | World Explorer`,
+      description: `Details about ${country?.name?.common || "Country"}`,
     };
   } catch {
-    return { title: "Country Details | World Explorer" };
+    return {
+      title: "Country Details | World Explorer",
+    };
   }
 }
 
 export default async function CountryDetailsPage({ params }) {
+  const { code } = await params;
+
   // This page fetches fresh data every time.
   const res = await fetch(
-    `https://restcountries.com/v3.1/alpha/${params.code}`,
+    `https://restcountries.com/v3.1/alpha/${code}?fields=name,flags,capital,region,subregion,population,languages,currencies,timezones,maps`,
     {
       cache: "no-store",
-    },
+    }
   );
 
   if (!res.ok) {
@@ -53,7 +65,8 @@ export default async function CountryDetailsPage({ params }) {
   }
 
   const data = await res.json();
-  const country = data[0];
+
+  const country = Array.isArray(data) ? data[0] : data;
 
   if (!country) {
     notFound();
@@ -83,9 +96,11 @@ export default async function CountryDetailsPage({ params }) {
           <p className="mb-2 text-sm font-semibold uppercase tracking-[0.2em] text-[#001954]">
             Country Details
           </p>
+
           <h1 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
             {country.name?.common}
           </h1>
+
           <p className="mt-2 text-slate-600">
             Official Name: {country.name?.official || "Not available"}
           </p>
@@ -123,9 +138,7 @@ export default async function CountryDetailsPage({ params }) {
                 Population
               </dt>
               <dd className="mt-1 text-slate-900">
-                {country.population
-                  ? country.population.toLocaleString()
-                  : "Not available"}
+                {country.population?.toLocaleString() || "Not available"}
               </dd>
             </div>
 
