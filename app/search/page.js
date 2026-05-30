@@ -1,4 +1,4 @@
-import countrySerach from "@/components/countrySerach";
+import CountrySearch from "@/components/CountrySearch";
 
 export default async function SearchPage() {
   const res = await fetch("https://restcountries.com/v3.1/all", {
@@ -18,9 +18,11 @@ export default async function SearchPage() {
           Search Countries
         </h1>
         <p className="mt-3 max-w-2xl text-slate-600">
-          Search for countries by name and explore their details.
+          Search by country name and explore matching results instantly.
         </p>
       </section>
+
+      <CountrySearch countries={filteredCountries} />
     </main>
   );
 }

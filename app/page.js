@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function HomePage() {
   return (
     <main className="mx-auto w-full max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
-      <section className="gris gap-6 rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-200 lg:grid-cols-2 lg:p-10">
+      <section className="grid gap-6 rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-200 lg:grid-cols-2 lg:p-10">
         <div className="flex flex-col justify-center">
           <p className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-[#001954]">
             World Explorer
@@ -38,7 +38,7 @@ export default function HomePage() {
           </h2>
           <ul className="mt-4 space-y-3 text-slate-600">
             <li>Browse countries</li>
-            <li>Open details page</li>
+            <li>Open details pages</li>
             <li>Search by country name</li>
             <li>See maps and country facts</li>
           </ul>
@@ -46,13 +46,16 @@ export default function HomePage() {
       </section>
 
       <section className="mt-8 grid gap-4 md:grid-cols-3">
-        <article className="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-200 transition hover:ring-[#001954]">
-          <h3 className="text-lg font-semibold text-slate-900">
-            Server Components
-          </h3>
-          <p className="mt-2 text-sm text-slate-600">
-            This project uses Next.js 13's new app directory and server
-            components to fetch data on the server and render pages efficiently.
+        <article className="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
+          <h3 className="text-lg font-semibold">App Router</h3>
+          <p className="mt-2 text-slate-600">
+            Built with Next.js file-based routing and shared layout.
+          </p>
+        </article>
+        <article className="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
+          <h3 className="text-lg font-semibold">Server Components</h3>
+          <p className="mt-2 text-slate-600">
+            Country list and details pages fetch data on the server.
           </p>
         </article>
         <article className="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-200">

@@ -1,8 +1,9 @@
 import CountryCard from "@/components/CountryCard";
 
 export default async function CountriesPage() {
+  // This page can be statically rendered and cached.
   const res = await fetch("https://restcountries.com/v3.1/all", {
-    cache: "force-ache",
+    cache: "force-cache",
   });
 
   const countries = await res.json();
@@ -12,7 +13,7 @@ export default async function CountriesPage() {
     .sort((a, b) => a.name.common.localeCompare(b.name.common));
 
   return (
-    <main clssName="mx-auto w-full max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
+    <main className="mx-auto w-full max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
       <section className="mb-8">
         <h1 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
           Explore Countries
@@ -23,7 +24,7 @@ export default async function CountriesPage() {
         </p>
       </section>
 
-      <section className="grid gap-5 sm:grid-cols-2 lg:grid-cols-2">
+      <section className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
         {sortedCountries.slice(0, 20).map((country) => (
           <CountryCard key={country.cca3} country={country} />
         ))}

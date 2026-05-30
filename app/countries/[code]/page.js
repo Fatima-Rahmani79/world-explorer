@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-function formatLanguage(languages) {
+function formatLanguages(languages) {
   if (!languages) return "Not available";
   return Object.values(languages).join(", ");
 }
@@ -20,9 +20,7 @@ export async function generateMetadata({ params }) {
   try {
     const res = await fetch(
       `https://restcountries.com/v3.1/alpha/${params.code}`,
-      {
-        cache: "no-store",
-      },
+      { cache: "no-store" },
     );
 
     if (!res.ok) {
@@ -41,7 +39,8 @@ export async function generateMetadata({ params }) {
   }
 }
 
-export default async function CountryDetailPage({ params }) {
+export default async function CountryDetailsPage({ params }) {
+  // This page fetches fresh data every time.
   const res = await fetch(
     `https://restcountries.com/v3.1/alpha/${params.code}`,
     {
