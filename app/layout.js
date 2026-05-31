@@ -4,13 +4,14 @@ import Footer from "@/components/Footer";
 
 export const metadata = {
   title: "World Explorer",
-  description: "A Next.js country explorer project for Week 13 and Week 14",
+  description:
+    "A modern country explorer built with Next.js and REST Countries API",
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en" data-scroll-behavior="smooth">
-      <body className="min-h-screen bg-slate-50 text-slate-900">
+      <body className="min-h-screen bg-transparent text-slate-100">
         <div className="flex min-h-screen flex-col">
           <Navbar />
           <main className="flex-1">{children}</main>

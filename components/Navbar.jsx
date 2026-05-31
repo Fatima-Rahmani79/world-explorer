@@ -7,26 +7,29 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   const linkClass =
-    "rounded-full px-4 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-100 hover:text-[#001954]";
+    "rounded-full px-4 py-2 text-sm font-medium text-slate-200 transition hover:bg-white/10 hover:text-white";
 
   return (
-    <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur">
-      <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
+    <header className="sticky top-0 z-50 border-b border-white/10 bg-slate-950/95 backdrop-blur-xl">
+      <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
         <Link
           href="/"
-          className="text-lg font-bold tracking-tight text-[#001954]"
+          className="inline-flex items-center gap-3 text-lg font-bold tracking-tight text-white"
         >
-          World Explorer
+          <span className="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-gradient-to-br from-violet-500 to-sky-500 text-sm font-mono text-white shadow-lg shadow-violet-500/20">
+            WE
+          </span>
+          <span>World Explorer</span>
         </Link>
 
         <button
           type="button"
-          className="inline-flex items-center rounded-full border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-700 md:hidden"
+          className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-slate-900/80 px-4 py-2 text-sm font-semibold text-slate-200 md:hidden"
           onClick={() => setOpen((prev) => !prev)}
           aria-expanded={open}
           aria-label="Toggle menu"
         >
-          Menu
+          <span>{open ? "Close" : "Menu"}</span>
         </button>
 
         <nav className="hidden items-center gap-2 md:flex" aria-label="Main">
@@ -47,10 +50,10 @@ export default function Navbar() {
 
       {open && (
         <nav
-          className="border-t border-slate-200 bg-white px-4 py-4 md:hidden"
+          className="border-t border-white/10 bg-slate-950/95 px-4 py-4 md:hidden"
           aria-label="Mobile"
         >
-          <div className="mx-auto flex w-full max-w-6xl flex-col gap-2 sm:px-2">
+          <div className="mx-auto flex w-full max-w-7xl flex-col gap-2 sm:px-2">
             <Link href="/" onClick={() => setOpen(false)} className={linkClass}>
               Home
             </Link>

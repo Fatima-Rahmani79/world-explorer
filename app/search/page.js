@@ -31,7 +31,7 @@ export default async function SearchPage() {
   if (loadError) {
     return (
       <main className="mx-auto max-w-4xl px-4 py-10">
-        <div className="rounded-2xl bg-red-50 p-6 text-red-700">
+        <div className="rounded-[2rem] bg-red-950/90 p-6 text-red-300 ring-1 ring-red-500/20">
           Failed to load countries.
         </div>
       </main>
@@ -39,18 +39,23 @@ export default async function SearchPage() {
   }
 
   return (
-    <main className="mx-auto w-full max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
-      <section className="mb-8">
-        <h1 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-          Search Countries
+    <main className="mx-auto w-full max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
+      <section className="rounded-[2.5rem] border border-white/10 bg-slate-950/80 p-8 shadow-[0_40px_90px_-40px_rgba(15,23,42,0.8)] ring-1 ring-white/10 backdrop-blur-xl">
+        <p className="text-sm uppercase tracking-[0.28em] text-violet-300">
+          Country search
+        </p>
+        <h1 className="mt-4 text-4xl font-semibold tracking-tight text-white sm:text-5xl">
+          Search any country instantly.
         </h1>
-
-        <p className="mt-3 max-w-2xl text-slate-600">
-          Search by country name and explore matching results instantly.
+        <p className="mt-4 max-w-2xl text-slate-300 sm:text-lg">
+          Find a country by name, view the details, and browse curated results
+          in a clean, premium layout.
         </p>
       </section>
 
-      <CountrySearch countries={filteredCountries} />
+      <div className="mt-10">
+        <CountrySearch countries={filteredCountries} />
+      </div>
     </main>
   );
 }
